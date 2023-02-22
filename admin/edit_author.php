@@ -6,6 +6,7 @@ $sql = " SELECT * FROM tacgia where ma_tgia = '$id'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
+
 ?>
 <main class="container mt-5 mb-5">
     <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->

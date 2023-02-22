@@ -36,11 +36,10 @@ include("header.php")
                                 </td>';
 
                             echo '<td>
-                            <a href="delete_author.php?deleteid= '.$id.' "><i class="fa-solid fa-trash"></i></a>
+                            <a href="delete_author.php?deleteid= ' . $id . ' "><i class="fa-solid fa-trash"></i></a>
                                 </td>';
 
                             echo '</tr>';
-                            
                         }
                     }
                     ?>
