@@ -1,7 +1,7 @@
 <?php
  $servername = "localhost";
  $username = "root";
- $password = "123456";
+ $password = "";
  $db_name = "btth01_cse485";  
  $conn = new mysqli($servername, $username, $password, $db_name, 3306);
  if($conn->connect_error){
