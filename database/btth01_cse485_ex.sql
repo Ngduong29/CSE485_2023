@@ -329,7 +329,13 @@ SET t.SLBaiViet = (
   WHERE bv.ma_tloai = t.ma_tloai
 );
  -- - Tạo trigger:
-
+ALTER TABLE theloai ADD COLUMN SLBaiViet INT DEFAULT 0;
+CREATE TRIGGER tg_CapNhatTheLoai 
+AFTER INSERT ON baiviet
+FOR EACH ROW
+BEGIN
+  UPDATE theloai SET SLBaiViet = SLBaiViet + 1 WHERE baiviet.ma_tloai = NEW.ma_tloai;
+END;
 
 --l. Bổ sung thêm bảng Users để lưu thông tin Tài khoản đăng nhập và sử dụng cho chức năng Đăng nhập/Quản trị trang web. (5 đ)
 CREATE TABLE Users (
