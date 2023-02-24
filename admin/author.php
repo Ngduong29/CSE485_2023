@@ -1,6 +1,6 @@
 <?php
 include("header.php")
-?>
+    ?>
 <main class="container mt-5 mb-5">
     <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
     <div class="row">
@@ -19,30 +19,35 @@ include("header.php")
                 <tbody>
                     <?php
                     include '../config.php';
+                    $count = 0;
 
                     $sql = "SELECT * FROM tacgia ";
                     $result = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             $id = $row['ma_tgia'];
-
-                            echo '<tr>';
-                            echo '<th scope="row">' . $row['ma_tgia'] . '</th>';
-                            echo '<td>' . $row['ten_tgia'] . '</td>';
-                            echo '<td>' . $row['hinh_tgia'] . '</td>';
-                            echo '<td>
-                           
-                            <a href="edit_author.php?"><i class="fa-solid fa-pen-to-square"></i></a>
-                                </td>';
-
-                            echo '<td>
-
-                            <a href="delete_author.php?deleteid= '.$id.' "><i class="fa-solid fa-trash"></i></a>
-                                </td>';
-
-                            echo '</tr>';
+                            $count++;
+                            ?>
+                            <tr>
+                                <th scope="row">
+                                    <?= $count ?>
+                                </th>
+                                <td>
+                                    <?= $row['ten_tgia'] ?>
+                                </td>
+                                <td>
+                                    <?= $row['hinh_tgia'] ?>
+                                </td>
+                                <td>
+                                    <a href="edit_author.php?id=<?= $id ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                </td>
+                                <td>
+                                    <a onclick="return confirm('Ban co muon xoa khong');"
+                                        href="delete_author.php?deleteid= <?= $id ?>"><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
                             
-
+                            <?php
                         }
                     }
                     ?>
@@ -54,4 +59,4 @@ include("header.php")
 </main>
 <?php
 include("footer.php")
-?>
+    ?>
