@@ -1,9 +1,10 @@
 <?php
  $servername = "localhost";
  $username = "root";
- $password = "";
+ $password = "123456";
  $db_name = "btth01_cse485";  
  $conn = new mysqli($servername, $username, $password, $db_name, 3306);
+ mysqli_query($conn, "SET NAMES 'utf8'");
  if($conn->connect_error){
      die("Connection failed".$conn->connect_error);
  }

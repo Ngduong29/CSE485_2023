@@ -18,31 +18,38 @@ include("header.php");
                     </tr>
                 </thead>
                 <tbody>
-                <?php
-include '../config.php';
+                    <?php
+                    include '../config.php';
+                    $count = 0;
+                    $sql = "SELECT * FROM theloai";
+                    $result = mysqli_query($conn, $sql);
+                    if ($result) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $id = $row['ma_tloai'];
+                            $count++;
+                            ?>
+                            <th scope="row">
+                                <?= $count ?>
+                            </th>
+                            <td>
+                                <?= $row['ten_tloai'] ?>
+                            </td>
+                            <td>
+                                <?= $row['SLBaiViet'] ?>
+                            </td>
+                            <td>
+                                <a href="edit_category.php?id=<?= $id ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                            <td>
+                                <a onclick="return confirm('Ban co muon xoa khong');"
+                                    href="delete_category.php?deleteid= <?= $id ?>"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                            </tr>
 
-$sql = "SELECT * FROM theloai";
-$result = mysqli_query($conn, $sql);
-if ($result){
-    while($row = mysqli_fetch_assoc($result)){
-        $id = $row['ma_tloai'];
-        $ten_tloai = $row['ten_tloai'];
-        $SLBaiViet = $row['SLBaiViet'];
-        echo ' <tr>
-        <th scope = "row">'. $id .'</th>
-        <td>'. $ten_tloai .'</td>
-        <td>'. $SLBaiViet .'</td>
-        <td>
-            <a href="edit_category.php?id= '.$id.' "><i class="fa-solid fa-pen-to-square"></i></a>
-        </td>
-        <td>
-        <a href="delete_category.php?deleteid= '.$id.' "><i class="fa-solid fa-trash"></i></a>
-   </td>
-     
-        </tr>';
-    }
-}
-?>
+                            <?php
+                        }
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
