@@ -1,5 +1,5 @@
 <?php
-include("header.php")
+include("header.php");
 ?>
     <main class="container mt-5 mb-5">
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
@@ -12,7 +12,14 @@ include("header.php")
                         </h5>
 
                         <h5 class="h1 text-center">
-                            110
+                            <?php   
+                             include '../config.php';
+                             $sql = "SELECT COUNT(id) as count FROM users";
+                             $result = mysqli_query($conn,$sql);
+                             $row = mysqli_fetch_array($result);
+                             $count = strval($row['count']);
+                             echo $count;
+                            ?>
                         </h5>
                     </div>
                 </div>
@@ -26,7 +33,14 @@ include("header.php")
                         </h5>
 
                         <h5 class="h1 text-center">
-                            10
+                        <?php   
+                             include '../config.php';
+                             $sql = "SELECT COUNT(ma_tloai) as count FROM theloai";
+                             $result = mysqli_query($conn,$sql);
+                             $row = mysqli_fetch_array($result);
+                             $count = strval($row['count']);
+                             echo $count;
+                            ?>
                         </h5>
                     </div>
                 </div>
@@ -40,7 +54,14 @@ include("header.php")
                         </h5>
 
                         <h5 class="h1 text-center">
-                            20
+                        <?php   
+                             include '../config.php';
+                             $sql = "SELECT COUNT(ma_tgia) as count FROM tacgia";
+                             $result = mysqli_query($conn,$sql);
+                             $row = mysqli_fetch_array($result);
+                             $count = strval($row['count']);
+                             echo $count;
+                            ?>
                         </h5>
                     </div>
                 </div>
@@ -54,7 +75,14 @@ include("header.php")
                         </h5>
 
                         <h5 class="h1 text-center">
-                            110
+                        <?php   
+                             include '../config.php';
+                             $sql = "SELECT COUNT(ma_bviet) as count FROM baiviet";
+                             $result = mysqli_query($conn,$sql);
+                             $row = mysqli_fetch_array($result);
+                             $count = strval($row['count']);
+                             echo $count;
+                            ?>
                         </h5>
                     </div>
                 </div>

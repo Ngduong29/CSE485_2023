@@ -80,7 +80,7 @@ $row = mysqli_fetch_assoc($result);
 
                 <div class="form-group mt-3">
                     <label>Ngày viết</label>
-                    <input type="date" class="form-control" name="ngayviet" value="<?php echo $row['ngayviet']; ?>">
+                    <input type="date" class="form-control" name="ngayviet" value="<?php echo date('Y-m-d', strtotime($row["ngayviet"])) ?>">
                 </div>
 
                 <div class="form-group mt-3">
