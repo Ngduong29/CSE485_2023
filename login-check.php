@@ -1,6 +1,7 @@
 <?php
-
+session_start();
 include 'config.php';
+
 if (isset($_POST['button'])){
    $username = $_POST['username'];
    $password = $_POST['password'];
@@ -14,6 +15,7 @@ if (isset($_POST['button'])){
     $role = $row['role'];
     if ($pass_hash==$password) {
         if($role =='admin'){
+          $_SESSION['admin'] = $username;
 
       header("location:admin/index.php");}
       
