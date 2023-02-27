@@ -66,7 +66,9 @@ include("header.php")
                                     <?= $row['ngayviet'] ?>
                                 </td>
                                 <td>
-                                    <img style="width: 100px;" src="/btth01/images/songs/<?php echo $row['hinhanh']; ?>">
+
+                                <img style="width: 100px;" src="/btth01/images/songs/<?php echo $row['hinhanh'];?>">
+
                                 </td>
                                 <td>
                                     <a href="edit_article.php?id=<?= $id ?>"><i class="fa-solid fa-pen-to-square"></i></a>
