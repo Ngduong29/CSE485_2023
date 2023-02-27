@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin'])){
+    header("Location:../login.php");
+}
 include '../config.php';
 include("header.php");
         $id = $_GET['ma_tloai'];

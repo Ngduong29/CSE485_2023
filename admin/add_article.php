@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin'])){
+    header("Location:../login.php");
+}
 include("header.php");
 include '../config.php';
 if (isset($_POST['submit'])) {
