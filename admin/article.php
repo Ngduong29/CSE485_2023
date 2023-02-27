@@ -26,7 +26,7 @@ include("header.php")
                     <?php
                     include '../config.php';
 
-                    $sql = "SELECT baiviet.ma_bviet, baiviet.tieude, baiviet.ten_bhat, theloai.ten_tloai, baiviet.tomtat, baiviet.noidung, tacgia.ten_tgia, baiviet.ngayviet, baiviet.hinhanh 
+                    $sql = "SELECT baiviet.ma_bviet, baiviet.tieude, baiviet.ten_bhat, theloai.ten_tloai, baiviet.tomtat, baiviet.noidung, tacgia.ten_tgia, baiviet.ngayviet, hinhanh 
                            FROM baiviet, theloai, tacgia
                            Where baiviet.ma_tloai = theloai.ma_tloai AND baiviet.ma_tgia = tacgia.ma_tgia";
                     $count = 0;
@@ -62,7 +62,7 @@ include("header.php")
                                     <?= $row['ngayviet'] ?>
                                 </td>
                                 <td>
-                                    <?= $row['hinhanh'] ?>
+                                <img style="width: 100px;" src="/btth01/images/songs/<?php echo $row['hinhanh'];?>">
                                 </td>
                                 <td>
                                     <a href="edit_article.php?id=<?= $id ?>"><i class="fa-solid fa-pen-to-square"></i></a>

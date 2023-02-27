@@ -12,7 +12,11 @@ $row = mysqli_fetch_assoc($result);
     <div class="row">
         <div class="col-sm">
             <h3 class="text-center text-uppercase fw-bold">Sửa thông tin bài viết</h3>
-            <form action="process_update_article.php?ma_tloai=<?php echo $id ?>" method="post">
+            <form action="process_update_article.php" method="post" enctype="multipart/form-data">
+            <div class="form-group mt-3">
+                    <label>Mã bài viết</label>
+                    <input type="text" class="form-control" name="ma_bviet" readonly value="<?php echo $row['ma_bviet'] ?>">
+                </div>
                 <div class="form-group mt-3">
                     <label>Tiêu đề</label>
                     <input type="text" class="form-control" name="tieude" value="<?php echo $row['tieude'] ?>">
@@ -25,7 +29,7 @@ $row = mysqli_fetch_assoc($result);
 
                 <div class="form-group mt-3">
                     <label>Tên thể loại</label>
-                    <select class="form-select" aria-label="Default select example" name="ma_tloai"
+                    <select class="form-select" aria-label="Default select example" name="ten_tloai"
                         value="<?php echo $row['ten_tloai'] ?>">
                         <?php
                         include '../config.php';
@@ -35,7 +39,7 @@ $row = mysqli_fetch_assoc($result);
                             while ($theloai = $result->fetch_assoc()) {
 
                                 $selected = ($theloai['ma_tloai'] == $row['ma_tloai']) ? 'selected' : '';
-                                echo "<option value='" . $theloai['ma_tloai'] . "' $selected>" . $theloai['ten_tloai'] . "</option>";
+                                echo "<option value='" . $theloai['ten_tloai'] . "' $selected>" . $theloai['ten_tloai'] . "</option>";
                             }
                         } else {
                             echo "không tìm thấy thể loại";
@@ -57,7 +61,7 @@ $row = mysqli_fetch_assoc($result);
 
                 <div class="form-group mt-3">
                     <label>Tác giả</label>
-                    <select class="form-select" aria-label="Default select example" id="ten_tgia" name="ma_tgia"
+                    <select class="form-select" aria-label="Default select example" id="ten_tgia" name="ten_tgia"
                         value="<?php echo $row['ten_tgia'] ?>">
                         <?php
                         include '../config.php';
@@ -67,7 +71,7 @@ $row = mysqli_fetch_assoc($result);
                             while ($tacgia = $result->fetch_assoc()) {
 
                                 $selected = ($tacgia['ma_tgia'] == $row['ma_tgia']) ? 'selected' : '';
-                                echo "<option value='" . $tacgia['ma_tloai'] . "' $selected>" . $tacgia['ten_tgia'] . "</option>";
+                                echo "<option value='" . $tacgia['ten_tgia'] . "' $selected>" . $tacgia['ten_tgia'] . "</option>";
                             }
                         } else {
                             echo "không tìm thấy tác giả";
@@ -85,12 +89,13 @@ $row = mysqli_fetch_assoc($result);
 
                 <div class="form-group mt-3">
                     <label>Hình ảnh</label>
-                    <input type="text" class="form-control" name="hinhanh" value="<?= $row['hinhanh'] ?>">
+                    <img style="width: 100px;" src="/btth01/images/songs/<?php echo $row['hinhanh'];?>">
+                    <input type="file" class="form-control" name="hinhanh">
                 </div>
 
                 <div class="form-group  float-end mt-3">
-                    <input type="submit" name="save" value="Lưu lại" class="btn btn-success">
-                    <a href="category.php" class="btn btn-warning ">Quay lại</a>
+                    <input type="submit" name="submit" value="Lưu lại" class="btn btn-success">
+                    <a href="article.php" class="btn btn-warning ">Quay lại</a>
                 </div>
             </form>
         </div>
